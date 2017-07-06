@@ -67,7 +67,7 @@ def root():
             if town not in towns:
                 towns.append(town)
                 
-    
+    worlds = {"tokyo":u"東京周辺", "alice":u"不思議な国のアリス", "nausicaa":u"ナウシカ", "lotr":"Middle Earth (Lord of the Rings)", "pokemon":"Pokemon: Kanto Region"}    
     
     frIndex = request.form.get('fr', default=1, type=int)
     toIndex = request.form.get('to', default=0, type=int)
@@ -77,6 +77,6 @@ def root():
     
     path = bfs(net, fr, to)
     
-    return render_template("hello.html", towns=towns, fr=fr, to=to, path=path, world=WORLD)
+    return render_template("hello.html", towns=towns, fr=fr, to=to, path=path, world=WORLD, worlds=worlds)
 
 

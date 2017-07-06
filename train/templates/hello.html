@@ -1,5 +1,9 @@
 <body>
 	<h1>from {{fr}} to {{to}}</h1>
+	
+	<p>現在の世界は {{worlds[world]}} です</p>
+	
+	<br>
 
 	{%if path == "No path found" %}
 		No path found
@@ -20,13 +24,13 @@
 		from: <br>
 		<select name="fr">
 			{% for town in towns %}
-                	<option value="{{loop.index}}">{{loop.index}}:{{town}}</option>
+                		<option value="{{loop.index}}">{{town}}</option>
                 	{% endfor %}
                 </select><br>
                 to: <br>
 		<select name="to">
 			{% for town in towns %}
-                	<option value="{{loop.index}}">{{loop.index}}:{{town}}</option>
+                		<option value="{{loop.index}}">{{town}}</option>
                 	{% endfor %}
                 </select>
 		<br>
@@ -36,11 +40,9 @@
 	<p><form method="post">
 		世界を変える
 		<select name="world">
-		        <option value="tokyo">東京周辺</option>
-		        <option value="alice">不思議な国のアリス</option>
-		        <option value="nausicaa">ナウシカ</option>
-		        <option value="lotr">Middle Earth (Lord of the Rings)</option>
-		        <option value="pokemon">Pokemon: Kanto Region</option>
+			{% for id, world in worlds.items() %}
+                		<option value={{id}}>{{world}}</option>
+                	{% endfor %}
 		</select>
 		<br>
                 <button type="submit">Change!</button>
