@@ -1,0 +1,50 @@
+<body>
+	<h1>from {{fr}} to {{to}}</h1>
+	
+	{{world}}
+
+	{%if path == "No path found" %}
+		No path found
+	{% else %}
+		<p><table border=0>
+		{% for move in path %}
+			<tr>
+				<td>{{move[1]}}</td>
+				<td>で</td>
+				<td>{{move[0]}}</td>
+				<td>まで行く</td>
+			</tr>
+		{% endfor %}
+		</table></p>
+	{% endif %}
+	
+	<p><form method="post">
+		from: <br>
+		<select name="fr">
+			{% for town in towns %}
+                	<option value="{{loop.index}}">{{loop.index}}:{{town}}</option>
+                	{% endfor %}
+                </select><br>
+                to: <br>
+		<select name="to">
+			{% for town in towns %}
+                	<option value="{{loop.index}}">{{loop.index}}:{{town}}</option>
+                	{% endfor %}
+                </select>
+		<br>
+                <button type="submit">Search</button>
+	</form></p>
+	
+	<p><form method="post">
+		世界を変える
+		<select name="world">
+		        <option value="tokyo">東京周辺</option>
+		        <option value="alice">不思議な国のアリス</option>
+		        <option value="nausicaa">ナウシカ</option>
+		        <option value="lotr">Middle Earth (Lord of the Rings)</option>
+		        <option value="pokemon">Pokemon: Kanto Region</option>
+		</select>
+		<br>
+                <button type="submit">Change!</button>
+         </form></p>
+</body>
